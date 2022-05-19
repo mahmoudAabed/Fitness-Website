@@ -1,0 +1,539 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@1,500&display=swap');
+* {
+    font-family: 'Nunito', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    outline: none;
+    border: none;
+    text-decoration: none;
+    transition: all 0.5s linear;
+}
+
+$orange:#ff5421;
+$white:#FFF;
+$black:#000;
+$light-color:#ccc;
+$bg-color:#1d0e15;
+$border:.1rem solid rgba(255,
+255,
+255,
+.2);
+@mixin grid($val) {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax($val, 1fr));
+    gap: 2rem;
+}
+
+@mixin title-text($titleText) {
+    font-size: $titleText;
+    text-transform: capitalize;
+    color: $white;
+}
+
+@mixin praph-text($praphText) {
+    font-size: $praphText;
+    color: $light-color;
+    line-height: 2;
+}
+
+html {
+    overflow-x: hidden;
+    font-size: 62.5;
+    scroll-behavior: smooth;
+    scroll-padding-top: 8rem;
+    &::-webkit-scrollbar {
+        width: 1rem;
+    }
+    &::-webkit-scrollbar-track {
+        background-color: $bg-color;
+    }
+    &::-webkit-scrollbar-thumb {
+        background-color: $orange;
+    }
+}
+
+body {
+    background-color: $bg-color;
+    height: 300rem;
+}
+
+.header {
+    z-index: 1000;
+    padding: 3rem 1rem;
+    &.active {
+        background-color: $white;
+        padding: 2rem 1rem;
+        .logo {
+            color: $black;
+        }
+        .nav a {
+            color: $black;
+        }
+        #menu-btn {
+            color: $black;
+        }
+    }
+    .logo {
+        font-size: 2.5rem;
+        color: $white;
+        font-weight: bolder;
+        span {
+            color: $orange;
+        }
+    }
+    .nav a {
+        font-size: 2rem;
+        margin-left: 2rem;
+        color: $white;
+        &:hover {
+            color: $orange;
+        }
+    }
+    #menu-btn {
+        display: none;
+        font-size: 2.5rem;
+        cursor: pointer;
+        color: $white;
+    }
+}
+
+//start home section
+.home {
+    background: url('../images/home-bg.jpg') no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    span {
+        font-size: 2.5rem;
+        color: $orange;
+    }
+    h3 {
+        @include title-text(5rem);
+        padding-top: 1rem;
+    }
+}
+
+section {
+    padding: 3rem 1rem;
+}
+
+.link-btn {
+    margin-top: 1rem;
+    display: inline-block;
+    padding: 1rem 3rem;
+    background: $orange;
+    color: $white;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 1.5rem;
+    &:hover {
+        background: $white;
+        color: $orange;
+    }
+}
+
+a {
+    text-decoration: none;
+}
+
+//end section home
+//start section about
+.about {
+    span {
+        font-size: 2rem;
+        color: $orange;
+    }
+    h3 {
+        @include title-text(2.5rem);
+        padding: 1rem 0;
+    }
+    P {
+        @include praph-text(1.5rem);
+        padding: 1rem 0;
+    }
+    ul {
+        list-style: none;
+        li {
+            padding-top: 1rem;
+            @include title-text(1.3rem);
+            i {
+                padding-right: 1rem;
+                color: $orange;
+            }
+        }
+    }
+}
+
+//end section about
+//start section counter 
+.counter {
+    background: url('../images/counter-bg.jpg') no-repeat;
+    background-size: cover;
+    background-position: center;
+    .container-box {
+        @include grid(25rem);
+        .box {
+            text-align: center;
+            .num,
+            .plus {
+                font-size: 5rem;
+                color: $orange;
+            }
+            p {
+                @include title-text(2rem)
+            }
+        }
+    }
+}
+
+//end section counter
+//media queries
+@media(max-width:991px) {
+    html {
+        font-size: 55%;
+    }
+}
+
+@media(max-width:768px) {
+    html {
+        font-size: 50%;
+    }
+    .header {
+        padding: 2rem;
+        #menu-btn {
+            display: inline-block;
+            &.fa-times {
+                transform: rotate(180deg);
+                transition: all 0.5s linear;
+            }
+        }
+        .nav {
+            position: absolute;
+            top: 99%;
+            left: 0;
+            right: 0;
+            padding: 1rem 0;
+            flex-flow: column;
+            background-color: $white;
+            clip-path: polygon(0 0, 100% 0, 96% 0, 0 0);
+            &.active {
+                clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+            }
+            a {
+                color: $black;
+                margin: 2rem;
+            }
+        }
+    }
+}
+
+@media(max-width:450px) {
+    html {
+        font-size: 50%;
+    }
+}
+
+//start section courses
+.heading {
+    text-align: center;
+    margin-bottom: 3rem;
+    span {
+        font-size: 2.5rem;
+        color: $orange;
+    }
+    h3 {
+        @include title-text(3.5rem)
+    }
+}
+
+.courses {
+    .container-box {
+        @include grid(18rem);
+        .box {
+            &:hover .images img {
+                transform: scale(1.1);
+            }
+            border: $border;
+            .images {
+                height: 17rem;
+                overflow: hidden;
+                img {
+                    height: 100%;
+                    width: 100%;
+                    object-fit: cover;
+                }
+            }
+            .contant {
+                padding: 2rem;
+                .icons {
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                    padding-bottom: 1rem;
+                    span {
+                        @include title-text(15px);
+                        i {
+                            color: $orange;
+                            padding-right: .5rem;
+                        }
+                    }
+                }
+                h3 {
+                    @include title-text(2rem);
+                    text-align: left;
+                    padding: .5rem 0;
+                }
+            }
+        }
+    }
+}
+
+@media(max-width:991px) {
+    .courses {
+        .container-box {
+            @include grid(30rem);
+        }
+    }
+}
+
+//start section priceing
+.priceing {
+    .container-box {
+        @include grid(20rem);
+        margin-top: 8rem;
+        margin-bottom: 5rem;
+        .box {
+            &:nth-child(2) {
+                transform: scale(1.2);
+            }
+            padding: 2rem;
+            text-align: center;
+            border: $border;
+            background: $bg-color;
+            border-radius: .5rem;
+            h3 {
+                @include title-text(2rem);
+                padding-top: 1rem;
+                font-weight: normal;
+            }
+            .price {
+                font-weight: bolder;
+                padding: 1rem 0;
+                @include title-text(6rem);
+                span {
+                    font-size: 2rem;
+                    font-weight: normal;
+                }
+            }
+            //
+            .list {
+                text-align: left;
+                p {
+                    @include praph-text(1.7rem);
+                    i {
+                        padding-right: .5rem;
+                        color: $orange;
+                        &.fa-times {
+                            color: $white;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media(max-width:991) {
+    .priceing {
+        .container-box {
+            @include grid(50rem);
+            margin-top: 0;
+            margin-bottom: 0;
+        }
+    }
+    .priceing .container-box {
+        .box:nth-child(2) {
+            transform: scale(1);
+        }
+    }
+    .join {
+        h3 {
+            font-size: 2rem;
+        }
+    }
+}
+
+//start section join us
+.join {
+    span {
+        font-size: 2.5rem;
+        color: $orange;
+    }
+    h3 {
+        @include title-text(2.7rem);
+        padding-top: 1rem;
+    }
+    p {
+        padding: 1rem 0;
+        @include praph-text(1.5rem)
+    }
+}
+
+//start section team
+.team {
+    .container-box {
+        @include grid(20rem);
+        .box {
+            height: 50rem;
+            overflow: hidden;
+            position: relative;
+            &:hover {
+                .contant {
+                    left: -100%;
+                }
+                .share {
+                    left: 0;
+                }
+            }
+            img {
+                height: 100%;
+                width: 100%;
+                object-fit: cover;
+            }
+            .contant {
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                background-color: $white;
+                padding: 1rem 2rem;
+                span {
+                    font-size: 1.7rem;
+                    color: $orange;
+                }
+                h3 {
+                    color: $black;
+                    font-size: 2rem;
+                }
+            }
+            .share {
+                position: absolute;
+                left: -100%;
+                bottom: 0;
+                background-color: $white;
+                padding: 1rem;
+                a {
+                    font-size: 2rem;
+                    color: $black;
+                    margin: 0 1rem;
+                    &:hover {
+                        color: $orange;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.blogs {
+    .container-box {
+        @include grid(20rem);
+        .box {
+            border: $border;
+            .image {
+                height: 25rem;
+                overflow: hidden;
+                img {
+                    height: 100%;
+                    width: 100%;
+                    object-fit: cover;
+                }
+                &:hover .image img {
+                    transform: scale(1.1)
+                }
+            }
+            .contant {
+                .link {
+                    @include title-text(1.6rem);
+                    &:hover {
+                        color: $orange;
+                    }
+                    padding-bottom:10px;
+                }
+                padding: 2rem;
+                .icons {
+                    padding-top: 1rem;
+                    border-top: $border;
+                    display: flex;
+                    align-items: center;
+                    justify-items: center;
+                    span {
+                        @include title-text(1rem);
+                        i {
+                            color: $orange;
+                            justify-content: space-between;
+                        }
+                        i:last-child {
+                            padding-left: 1.4rem;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+//start footer
+.footer {
+    background: url(../images/footer-bg.jpg) no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    .container-box {
+        @include grid(15rem);
+        .box {
+            h3 {
+                @include title-text(2rem);
+                padding: 1rem 0;
+            }
+            a {
+                @include grid(1.5rem);
+                padding: .5rem 0;
+                display: block;
+                color: $white;
+                i {
+                    padding-right: .5rem;
+                    color: $orange;
+                }
+                &:hover {
+                    color: $orange;
+                }
+            }
+            p {
+                @include praph-text(1.1rem)
+            }
+            .email {
+                width: 100%;
+                padding: 1.2rem;
+                color: $orange;
+                font-size: 1.6rem;
+                border: $border;
+                margin: 1rem 0;
+            }
+        }
+    }
+    .credit {
+        text-align: center;
+        @include title-text(2rem);
+        margin-top: 3rem;
+        padding-top: 3rem;
+        border-top: $border;
+        span {
+            color: $orange;
+        }
+    }
+}
+
+a {
+    text-decoration: none !important;
+}
